@@ -1,4 +1,4 @@
-package config;
+package com.middleware.logging.config;
 
 import com.middleware.logging.middleware.RequestLoggingMiddleware;
 import lombok.RequiredArgsConstructor;

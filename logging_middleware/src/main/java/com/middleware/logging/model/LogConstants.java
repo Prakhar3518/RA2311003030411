@@ -48,7 +48,7 @@ public class LogConstants {
     // Valid Package values for fullstack
     public final Set<String> SHARED_PACKAGES = Set.of(
             "auth",
-            "config",
+            "com/middleware/logging/config",
             "middleware",
             "utils"
     );
