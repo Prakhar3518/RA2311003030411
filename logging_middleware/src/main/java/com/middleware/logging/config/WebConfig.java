@@ -20,8 +20,5 @@ public class WebConfig implements WebMvcConfigurer {
                 .addPathPatterns("/**");
     }
 
-    @Bean
-    public RestTemplate restTemplate() {
-        return new RestTemplate();
-    }
+
 }
