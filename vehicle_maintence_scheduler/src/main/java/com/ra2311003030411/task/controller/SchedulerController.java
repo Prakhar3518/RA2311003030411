@@ -1,7 +1,7 @@
 package com.ra2311003030411.task.controller;
 
-import com.vehicle.scheduler.model.ScheduleResult;
-import com.vehicle.scheduler.service.SchedulerService;
+import com.ra2311003030411.task.model.ScheduleResult;
+import com.ra2311003030411.task.service.SchedulerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
