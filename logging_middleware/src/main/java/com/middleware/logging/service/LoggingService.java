@@ -11,10 +11,11 @@ import org.springframework.web.client.RestTemplate;
 
 @Service
 @RequiredArgsConstructor
-@Slf4j  // Logger
+@Slf4j //logger
 public class LoggingService {
 
     private static final String LOG_API_URL = "http://20.207.122.201/evaluation-service/logs";
+    private static final String AUTH_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJNYXBDbGFpbXMiOnsiYXVkIjoiaHR0cDovLzIwLjI0NC41Ni4xNDQvZXZhbHVhdGlvbi1zZXJ2aWNlIiwiZW1haWwiOiJwYzE5NzRAc3JtaXN0LmVkdS5pbiIsImV4cCI6MTc3NzY5ODg3MCwiaWF0IjoxNzc3Njk3OTcwLCJpc3MiOiJBZmZvcmQgTWVkaWNhbCBUZWNobm9sb2dpZXMgUHJpdmF0ZSBMaW1pdGVkIiwianRpIjoiYjM3ZWMzZTEtY2U4ZC00YThjLWI5ZWUtODRkY2M0NjM4ODdhIiwibG9jYWxlIjoiZW4tSU4iLCJuYW1lIjoicHJha2hhciBjaGF1ZGhhcnkiLCJzdWIiOiIyNzRkMTQxNC1hNGQ1LTRkYzktYTIzNS02YmMxMjkwM2I3MDcifSwiZW1haWwiOiJwYzE5NzRAc3JtaXN0LmVkdS5pbiIsIm5hbWUiOiJwcmFraGFyIGNoYXVkaGFyeSIsInJvbGxObyI6InJhMjMxMTAwMzAzMDQxMSIsImFjY2Vzc0NvZGUiOiJRa2JweEgiLCJjbGllbnRJRCI6IjI3NGQxNDE0LWE0ZDUtNGRjOS1hMjM1LTZiYzEyOTAzYjcwNyIsImNsaWVudFNlY3JldCI6ImpVSGtOeGp3SFFYYVB4TU4ifQ.yowsUzClFxpGs1dwAdHOF_ibmJ-eE0GYSF8xPN1z8vM";
 
     private final RestTemplate restTemplate;
 
@@ -23,7 +24,6 @@ public class LoggingService {
         if (!LogConstants.VALID_STACKS.contains(stack) ||
                 !LogConstants.VALID_LEVELS.contains(level) ||
                 !isValidPackage(stack, packageName)) {
-
             log.warn("Invalid log fields: {}, {}, {}", stack, level, packageName);
             return;
         }
@@ -33,6 +33,7 @@ public class LoggingService {
 
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
+            headers.setBearerAuth(AUTH_TOKEN);
 
             HttpEntity<LogRequest> request = new HttpEntity<>(logRequest, headers);
 
